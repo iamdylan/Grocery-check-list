@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='myApp'>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
@@ -9,11 +9,12 @@
     <link href="css/foundation.min.css" rel="stylesheet" media="screen">
     <link href="css/app-screen.css" rel="stylesheet" media="screen">
     <script src="js/angular.min.js"></script>
+    <script src="js/app.js"></script>
 </head>
-<body>
+<body ng-controller='grocListController'>
 <div class="row">
     <div class="column">
-        <h1>My Shopping List</h1>
+        <h1>My Grocery List</h1>
         <form id="addForm">
             <div class="row">
                 <div class="large-8 columns">
