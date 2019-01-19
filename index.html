@@ -17,16 +17,23 @@
         <h1>My Grocery List</h1>
         <form id="addForm">
             <div class="row">
+                <div class="row">
+                    <div class="column">
+                        <span class="spanLabel" ng-show="!minCharactersMet()">You need at least {{ charactersNeeded() }} characters more</span>
+                        <span class="spanLabel" ng-show="isCharWithinRange()">Remaining characters: {{ charactersRemaining() }}</span>
+                        <span class="spanLabel warning" ng-show="anyCharactersOver()">{{ charactersOver() }} characters too many</span>
+                    </div>
+            </div>
                 <div class="large-8 columns">
-                    <input type="text" name="item" placeholder="Item">
+                    <input type="text" ng-model="item" ng-trim="false" name="item" placeholder="Item">
                 </div>
                 <div class="large-2 columns">
                     <input
-                        type="text" name="qty" placeholder="Qty/Weight">
+                        type="text" name="qty" ng-model="qty" ng-trim="false" placeholder="Qty/Weight">
                 </div>
                 <div class="large-2 columns">
-                    <select name="type">
-                        <option></option>
+                    <select name="type" ng-model="type">
+                        <option ng-repeat="type in types" value="{{ type.id }}">{{ type.name }}</option>
                         </select>
                 </div>
             </div>
@@ -38,7 +45,7 @@
                             <button type="button" class="small button alert"><i class="fa fa-times"></i> Clear Completed</button>
                         </div>
                         <button type="submit" class="small button"><i class="fa fa-plus"></i> Add</button>
-                        <button type="submit" class="small button secondary"><i class="fa fa-ban"></i> Clear Entry</button>
+                        <button type="submit" class="small button secondary" ng-click="clear()"><i class="fa fa-ban"></i> Clear Entry</button>
                     </div>
                     <div class="show-for-small-only">
                         <ul class="medium button-group">
@@ -46,7 +53,7 @@
                                 <button type="submit" class="small button"><i class="fa fa-plus"></i></button>
                             </li>
                             <li>
-                                <button type="submit" class="small button secondary"><i class="fa fa-ban"></i></button>
+                                <button type="submit" class="small button secondary" ng-click="clear()"><i class="fa fa-ban"></i></button>
                             </li>
                             <li>
                                 <button type="button" class="small button primary"><i class="fa fa-print"></i></button>
