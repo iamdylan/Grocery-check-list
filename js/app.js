@@ -122,7 +122,7 @@ myApp.controller('grocListController', ['$scope', '$http', '$log', 'helperFactor
                 throw new Error('Oops... Something went wrong while selecting records');
             });
     };
-    $scope.select();
+    // $scope.select();
 
     $scope.update = function(item) {
         var thisData = "id=" + item.id;

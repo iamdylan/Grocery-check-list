@@ -12,33 +12,33 @@
     <script src="js/app.js"></script>
 </head>
 <body ng-controller='grocListController'>
-<div class="row">
-    <div class="column">
+<div class="grid-container full">
+    <div class="cell">
         <h1>My Grocery List</h1>
         <form id="addForm" ng-submit="insert()">
-            <div class="row">
-                <div class="row">
-                    <div class="column">
-                        <span class="spanLabel" ng-show="!minCharactersMet()">You need at least {{ charactersNeeded() }} characters more</span>
-                        <span class="spanLabel" ng-show="isCharWithinRange()">Remaining characters: {{ charactersRemaining() }}</span>
-                        <span class="spanLabel warning" ng-show="anyCharactersOver()">{{ charactersOver() }} characters too many</span>
-                    </div>
+            <div class="grid-x">
+                <div class="cell">
+                    <span class="spanLabel" ng-show="!minCharactersMet()">You need at least {{ charactersNeeded() }} more characters </span>
+                    <span class="spanLabel" ng-show="isCharWithinRange()">Remaining characters: {{ charactersRemaining() }}</span>
+                    <span class="spanLabel warning" ng-show="anyCharactersOver()">{{ charactersOver() }} characters too many</span>
+                </div>
             </div>
-                <div class="large-8 columns">
+            <div class="grid-x grid-margin-x">
+                <div class="large-8 cell">
                     <input type="text" ng-model="item" ng-trim="false" name="item" placeholder="Item">
                 </div>
-                <div class="large-2 columns">
+                <div class="large-2 cell">
                     <input
                         type="text" name="qty" ng-model="qty" ng-trim="false" placeholder="Qty/Weight">
                 </div>
-                <div class="large-2 columns">
+                <div class="large-2 cell">
                     <select name="type" ng-model="type">
                         <option ng-repeat="type in types" value="{{ type.id }}">{{ type.name }}</option>
                         </select>
                 </div>
             </div>
-            <div class="row">
-                <div class="column">
+            <div class="grid-x">
+                <div class="cell">
                     <div class="show-for-medium">
                         <div class="flr">
                             <button type="button" class="small button primary"><i class="fa fa-print"></i> Print List</button>
@@ -67,8 +67,8 @@
             </div>
         </form>
         <form id="items">
-            <div class="row" ng-repeat="item in items" ng-class="{ 'done' : item.done == 1 }">
-                <div class="small-8 columns itemName">
+            <div class="grid" ng-repeat="item in items" ng-class="{ 'done' : item.done == 1 }">
+                <div class="small-8 cell itemName">
                     <label for="item-{{ item.id }}">
                         <input type="checkbox"
                         name="item-{{ item.id }}"
@@ -79,8 +79,8 @@
                         ng-change="update(item)">{{ item.item }}
                     </label>
                 </div>
-                <div class="small-2 columns itemQty">{{ item.qty }}</div>
-                <div class="small-2 columns itemType">{{ item.type_name }}</div>
+                <div class="small-2 cell itemQty">{{ item.qty }}</div>
+                <div class="small-2 cell itemType">{{ item.type_name }}</div>
             </div>
         </form>
     </div>
