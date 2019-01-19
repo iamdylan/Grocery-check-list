@@ -123,5 +123,47 @@ myApp.controller('grocListController', ['$scope', '$http', '$log', 'helperFactor
             });
     };
     $scope.select();
+
+    $scope.update = function(item) {
+        var thisData = "id=" + item.id;
+        thisData += "&done=" + item.done;
+        $http({
+            method: 'POST',
+            url: urlUpdate,
+            data: thisData,
+            headers: {'Content-type' : 'application/x-www-form-urlencoded'}
+        })
+            .success(function(data) {
+                $log.info(data);
+            })
+            .error(function(data, status, headers, config) {
+                throw new Error('Oops... Something went wrong while updating records');
+            });
+    };
+
+    function _recordRemovedSuccessfully(data) {
+        return ( data && !data.error );
+    }
+
+    $scope.remove = function() {
+        var removeIds = helperFactory.filterFieldArrayByDone($scope.items, 'id', 1);
+        if (removeIds.length > 0) 
+            $http({
+                method: 'POST',
+                url: urlRemove,
+                data: removeIds,
+                headers: {'Content-type' : 'application/x-www-form-urlencoded'}
+            })
+                .success(function(data) {
+                    if (_recordRemovedSuccessfully(data)) {
+                        $scope.items = $scope.items.filter(function(item) {
+                            return item.done == 0;
+                        });
+                    }
+                })
+                .error(function(data, status, headers, config) {
+                    throw new Error('Oops... Something went wrong while removing records');
+                });
+    };
 }]);
 
