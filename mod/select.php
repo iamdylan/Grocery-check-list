@@ -1,6 +1,6 @@
 <?php
 try {
-    $objDb = new PDO('sqlite:../dbase/grocery');
+    $objDb = new PDO('sqlite:../db/grocery');
     $objDb->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $sql = "SELECT `i`.*,
@@ -13,9 +13,7 @@ try {
     $result = $objDb->query($sql);
 
     if (!$result) {
-
         throw new PDOException('The result returned no object');
-
     }
 
     $result->setFetchMode(PDO::FETCH_ASSOC);
@@ -48,5 +46,3 @@ try {
         'message' => $e->getMessage()
     ), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP);
 }
-
-?>

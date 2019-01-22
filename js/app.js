@@ -20,10 +20,10 @@ myApp.factory('helperFactory', function() {
 myApp.controller('grocListController', ['$scope', '$http', '$log', 'helperFactory', 'MAX_LENGTH', 'MIN_LENGTH', 
     function($scope, $http, $log, helperFactory, MAX_LENGTH, MIN_LENGTH) {
 
-    var urlInsert = '/mod/insert.php';
-    var urlSelect = '/mod/select.php';
-    var urlUpdate = '/mod/update.php';
-    var urlRemove = '/mod/remove.php';
+    var urlInsert = 'mod/insert.php';
+    var urlSelect = 'mod/select.php';
+    var urlUpdate = 'mod/update.php';
+    var urlRemove = 'mod/remove.php';
 
     $scope.types = [];
     $scope.items = [];
@@ -88,7 +88,7 @@ myApp.controller('grocListController', ['$scope', '$http', '$log', 'helperFactor
                 data : thisData,
                 headers : {'Content-Type' : 'application/x-www-form-urlencoded'}
             })
-            .success(function(data) {
+            .then(function(data) {
                 if (_recordAddedSuccessfully(data)) {
                     $scope.items.push({
                         id : data.item.id,
@@ -100,29 +100,32 @@ myApp.controller('grocListController', ['$scope', '$http', '$log', 'helperFactor
                         });
                     $scope.clear();
                 }
-            })
-            .error(function(data, status, headers, config) {
+            }
+            ,function(response) {
                 throw new Error('Oops... Something went wrong while inserting records');
             });
         }
     };
 
     $scope.select = function() {
-        $http.get(urlSelect)
-            .success(function(data) {
-                if (data.items) {
-                    $scope.items = data.items;
-                }
-                if (data.types) {
-                    $scope.types = data.types;
-                    $scope.type = $scope.types[0].id;
-                }
-            })
-            .error(function(data, status, headers, config) {
-                throw new Error('Oops... Something went wrong while selecting records');
-            });
+        $http({
+            method: 'GET', 
+            url: urlSelect
+        })
+        .then(function(response) {
+            if (response.data.items) {
+                $scope.items = response.data.items;
+            }
+            if (response.data.types) {
+                $scope.types = response.data.types;
+                $scope.type = $scope.types[0].id;
+            }
+        }
+        ,function(response) {
+            console.log(response.data.message);
+        });
     };
-    // $scope.select();
+    $scope.select();
 
     $scope.update = function(item) {
         var thisData = "id=" + item.id;
@@ -133,10 +136,10 @@ myApp.controller('grocListController', ['$scope', '$http', '$log', 'helperFactor
             data: thisData,
             headers: {'Content-type' : 'application/x-www-form-urlencoded'}
         })
-            .success(function(data) {
+            .then(function(data) {
                 $log.info(data);
-            })
-            .error(function(data, status, headers, config) {
+            }
+            ,function(data) {
                 throw new Error('Oops... Something went wrong while updating records');
             });
     };
@@ -154,14 +157,14 @@ myApp.controller('grocListController', ['$scope', '$http', '$log', 'helperFactor
                 data: removeIds,
                 headers: {'Content-type' : 'application/x-www-form-urlencoded'}
             })
-                .success(function(data) {
+                .then(function(data) {
                     if (_recordRemovedSuccessfully(data)) {
                         $scope.items = $scope.items.filter(function(item) {
                             return item.done == 0;
                         });
                     }
-                })
-                .error(function(data, status, headers, config) {
+                }
+                ,function(data) {
                     throw new Error('Oops... Something went wrong while removing records');
                 });
     };
