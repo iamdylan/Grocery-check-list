@@ -155,7 +155,7 @@ myApp.controller('grocListController', ['$scope', '$http', '$log', 'helperFactor
             $http({
                 method: 'POST',
                 url: urlRemove,
-                data: removeIds,
+                data: "ids=" + removeIds.join('|'),
                 headers: {'Content-type' : 'application/x-www-form-urlencoded'}
             })
                 .then(function(data) {

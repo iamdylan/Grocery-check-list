@@ -74,10 +74,10 @@
                         name="item-{{ item.id }}"
                         id="item-{{ item.id }}"
                         ng-model="item.done"
-                        ng-true-value="1"
-                        ng-false-value="0"
+                        ng-true-value="'1'"
+                        ng-false-value="'0'"
                         ng-change="update(item)"
-                        ng-checked="item.done == 1">{{ item.item }}
+                        >{{ item.item }}
                     </label>
                 </div>
                 <div class="small-2 cell itemQty">{{ item.qty }}</div>
