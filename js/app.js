@@ -169,5 +169,10 @@ myApp.controller('grocListController', ['$scope', '$http', '$log', 'helperFactor
                     throw new Error('Oops... Something went wrong while removing records');
                 });
     };
+
+    $scope.print = function() {
+        window.print();
+    };
+
 }]);
 

@@ -8,6 +8,7 @@
     <link href="css/normalize.css" rel="stylesheet" media="screen">
     <link href="css/foundation.min.css" rel="stylesheet" media="screen">
     <link href="css/app-screen.css" rel="stylesheet" media="screen">
+    <link href="css/app-print.css" rel="stylesheet" media="print">
     <script src="js/angular.min.js"></script>
     <script src="js/app.js"></script>
 </head>
@@ -41,7 +42,7 @@
                 <div class="cell">
                     <div class="show-for-medium">
                         <div class="flr">
-                            <button type="button" class="small button primary"><i class="fa fa-print"></i> Print List</button>
+                            <button type="button" class="small button primary" ng-click="print()"><i class="fa fa-print"></i> Print List</button>
                             <button type="button" class="small button alert" ng-click="remove()"><i class="fa fa-times"></i> Clear Completed</button>
                         </div>
                         <button type="submit" class="small button" ng-disabled="!goodToGo()"><i class="fa fa-plus"></i> Add</button>
@@ -56,7 +57,7 @@
                                 <button type="submit" class="small button secondary" ng-click="clear()"><i class="fa fa-ban"></i></button>
                             </li>
                             <li>
-                                <button type="button" class="small button primary"><i class="fa fa-print"></i></button>
+                                <button type="button" class="small button primary" ng-click="print()"><i class="fa fa-print"></i></button>
                             </li>
                             <li>
                                 <button type="button" class="small button alert" ng-click="remove()"><i class="fa fa-times"></i></button>
@@ -68,7 +69,7 @@
         </form>
         <form id="items">
             <div class="grid-x" ng-repeat="item in items" ng-class="{ 'done' : item.done == 1 }">
-                <div class="small-8 cell">
+                <div class="small-8 cell itemName">
                     <label for="item-{{ item.id }}">
                         <input type="checkbox"
                         name="item-{{ item.id }}"
