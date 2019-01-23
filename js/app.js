@@ -1,4 +1,4 @@
-const myApp = angular.module('myApp', []);
+const myApp = angular.module('myApp', ['ngAnimate']);
 
 myApp.constant('MAX_LENGTH', 50);
 myApp.constant('MIN_LENGTH', 2);
