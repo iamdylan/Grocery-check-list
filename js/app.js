@@ -73,8 +73,8 @@ myApp.controller('grocListController', ['$scope', '$http', '$log', 'helperFactor
         $scope.qty = '';
     };
 
-    function _recordAddedSuccessfully(data) {
-        return ( data && !data.error && data.item );
+    function _recordAddedSuccessfully(response) {
+        return ( response.data && !response.data.error && response.data.item );
     }
 
     $scope.insert = function() {
@@ -82,22 +82,23 @@ myApp.controller('grocListController', ['$scope', '$http', '$log', 'helperFactor
             var thisData = "item=" + $scope.item;
             thisData += "&qty=" + $scope.qty;
             thisData += "&type=" + $scope.type;
+            
             $http({
                 method : 'POST',
                 url : urlInsert,
                 data : thisData,
                 headers : {'Content-Type' : 'application/x-www-form-urlencoded'}
             })
-            .then(function(data) {
-                if (_recordAddedSuccessfully(data)) {
+            .then(function(response) {
+                if (_recordAddedSuccessfully(response)) {
                     $scope.items.push({
-                        id : data.item.id,
-                        item : data.item.item,
-                        qty : data.item.qty,
-                        type : data.item.type,
-                        type_name : data.item.type_name,
-                        done : data.item.done
-                        });
+                        id : response.data.item.id,
+                        item : response.data.item.item,
+                        qty : response.data.item.qty,
+                        type : response.data.item.type,
+                        type_name : response.data.item.type_name,
+                        done : response.data.item.done
+                    });
                     $scope.clear();
                 }
             }
