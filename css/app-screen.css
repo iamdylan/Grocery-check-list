@@ -1,56 +1,40 @@
 body {
-
     padding: 30px 50px;
-
 }
 
 .warning {
-
     color: #900;
-
 }
 
 .spanLabel {
-
     padding-bottom: 1em;
     display: block;
     font-size: 0.8em;
-
 }
 
 #items {
-
     margin: 0;
     padding: 0;
     list-style: none;
-
 }
 
-#items .row {
-
+#items .grid-x {
     padding: 10px 0;
     border-bottom: dashed 1px #aaa;
-
 }
 
-#items .row input {
-
+#items .grid-x input {
     margin-bottom: 0;
-
 }
 
-#items .row.done {
-
+#items .grid-x.done {
     background-color: #eee;
     font-style: italic;
     color: #aaa;
-
 }
 
 .flr {
-
     float: right;
-
 }
 
 ul{

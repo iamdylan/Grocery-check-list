@@ -68,7 +68,7 @@
         </form>
         <form id="items">
             <div class="grid-x" ng-repeat="item in items" ng-class="{ 'done' : item.done == 1 }">
-                <div class="small-8 cell itemName">
+                <div class="small-8 cell">
                     <label for="item-{{ item.id }}">
                         <input type="checkbox"
                         name="item-{{ item.id }}"
@@ -76,7 +76,8 @@
                         ng-model="item.done"
                         ng-true-value="1"
                         ng-false-value="0"
-                        ng-change="update(item)">{{ item.item }}
+                        ng-change="update(item)"
+                        ng-checked="item.done == 1">{{ item.item }}
                     </label>
                 </div>
                 <div class="small-2 cell itemQty">{{ item.qty }}</div>

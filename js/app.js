@@ -82,7 +82,7 @@ myApp.controller('grocListController', ['$scope', '$http', '$log', 'helperFactor
             var thisData = "item=" + $scope.item;
             thisData += "&qty=" + $scope.qty;
             thisData += "&type=" + $scope.type;
-            
+
             $http({
                 method : 'POST',
                 url : urlInsert,
@@ -137,10 +137,10 @@ myApp.controller('grocListController', ['$scope', '$http', '$log', 'helperFactor
             data: thisData,
             headers: {'Content-type' : 'application/x-www-form-urlencoded'}
         })
-            .then(function(data) {
-                $log.info(data);
+            .then(function(response) {
+                $log.info(response.data);
             }
-            ,function(data) {
+            ,function(response) {
                 throw new Error('Oops... Something went wrong while updating records');
             });
     };
