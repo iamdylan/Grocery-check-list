@@ -4,7 +4,7 @@ html{
 
 body {
     padding: 0px 0px;
-    font-family: 'Open Sans';
+    font-family: 'Open Sans', sans-serif;
     margin: 0;
 }
 
@@ -19,7 +19,7 @@ body {
     font-size: 23px;
     font-weight: normal;
     display: inline-block;
-    font-family: 'Open Sans';
+    font-family: 'Open Sans', sans-serif;
 }
 
 .inverse{
