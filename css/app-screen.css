@@ -17,7 +17,7 @@ body {
 
 #heading h1{
     font-size: 23px;
-    font-weight: normal;
+    font-weight: 600;
     display: inline-block;
     font-family: 'Open Sans', sans-serif;
 }
