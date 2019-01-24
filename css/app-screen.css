@@ -22,6 +22,15 @@ body {
     font-family: 'Open Sans';
 }
 
+.inverse{
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.fa-shopping-cart{
+    font-size: 24px;
+}
+
 .grid-container{
     padding: 30px 30px !important;
 }
@@ -40,6 +49,14 @@ body {
     margin: 0;
     padding: 0;
     list-style: none;
+}
+
+#items .itemQty{
+    text-align: right;
+}
+
+#items .itemType{
+    text-align: center;
 }
 
 #items .grid-x label{

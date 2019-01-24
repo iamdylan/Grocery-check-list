@@ -118,8 +118,8 @@ myApp.controller('grocListController', ['$scope', '$http', '$log', 'helperFactor
                 $scope.items = response.data.items;
             }
             if (response.data.types) {
+                response.data.types.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
                 $scope.types = response.data.types;
-                $scope.type = $scope.types[0].id;
             }
         }
         ,function(response) {

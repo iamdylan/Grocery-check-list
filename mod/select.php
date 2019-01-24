@@ -20,6 +20,8 @@ try {
 
     $items = $result->fetchAll();
 
+    
+
     $sql = "SELECT *
             FROM `types`
             ORDER BY `id`";
@@ -33,6 +35,8 @@ try {
     $result->setFetchMode(PDO::FETCH_ASSOC);
 
     $types = $result->fetchAll();
+    
+    asort($types);
 
     echo json_encode(array(
         'error' => false,

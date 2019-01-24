@@ -16,7 +16,7 @@
 </head>
 <body ng-controller='grocListController'>
 <div id='heading'>
-    <h1>My Grocery List</h1>
+    <h1><i class="fa fa-shopping-cart"></i> &nbsp; My Grocery List &nbsp; <i class="fa fa-shopping-cart inverse"></i></h1>
 </div>
 <div class="grid-container full">
     <div class="cell">
@@ -38,6 +38,7 @@
                 </div>
                 <div class="large-2 cell">
                     <select name="type" ng-model="type">
+                            <option value="" disabled selected>Measure</option>
                         <option ng-repeat="type in types" value="{{ type.id }}">{{ type.name }}</option>
                         </select>
                 </div>
@@ -85,8 +86,8 @@
                         >{{ item.item }}
                     </label>
                 </div>
-                <div class="small-2 cell itemQty">{{ item.qty }}</div>
-                <div class="small-2 cell itemType">{{ item.type_name }}</div>
+                <div class="small-1 cell itemQty">{{ item.qty }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+                <div class="small-3 cell itemType">{{ item.type_name }}</div>
             </div>
         </form>
     </div>
