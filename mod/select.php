@@ -1,6 +1,13 @@
 <?php
 try {
-    $objDb = new PDO('sqlite:../db/grocery');
+    $host = 'us-cdbr-iron-east-03.cleardb.net';
+    $user = 'b25041843c0a86';
+    $pass = '9c482365';
+    $dbname = 'heroku_e818f0b09bd0a0b';
+
+    $dsn = 'mysql:host='. $host .';dbname='. $dbname;
+
+    $objDb = new PDO($dsn, $user, $pass);
     $objDb->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     $sql = "SELECT `i`.*,
@@ -19,8 +26,6 @@ try {
     $result->setFetchMode(PDO::FETCH_ASSOC);
 
     $items = $result->fetchAll();
-
-    
 
     $sql = "SELECT *
             FROM `types`

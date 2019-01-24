@@ -141,7 +141,7 @@ myApp.controller('grocListController', ['$scope', '$http', '$log', 'helperFactor
                 $log.info(response.data);
             }
             ,function(response) {
-                throw new Error('Oops... Something went wrong while updating records');
+                console.log(response.data.message);
             });
     };
 
