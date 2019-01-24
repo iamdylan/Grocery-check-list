@@ -1,5 +1,29 @@
+html{
+    min-height: 100%;
+}
+
 body {
-    padding: 30px 50px;
+    padding: 0px 0px;
+    font-family: 'Open Sans';
+    margin: 0;
+}
+
+#heading{
+    text-align: center;
+    background: crimson;
+    color: #fff;
+    padding: 6px;
+}
+
+#heading h1{
+    font-size: 23px;
+    font-weight: normal;
+    display: inline-block;
+    font-family: 'Open Sans';
+}
+
+.grid-container{
+    padding: 30px 30px !important;
 }
 
 .warning {
@@ -9,7 +33,7 @@ body {
 .spanLabel {
     padding-bottom: 1em;
     display: block;
-    font-size: 0.8em;
+    font-size: 0.9em;
 }
 
 #items {
@@ -18,9 +42,13 @@ body {
     list-style: none;
 }
 
+#items .grid-x label{
+    font-size: 1em;
+}
+
 #items .grid-x {
     padding: 10px 0;
-    border-bottom: dashed 1px #aaa;
+    border-bottom: solid 2px #aaa;
 }
 
 #items .grid-x input {
@@ -28,7 +56,7 @@ body {
 }
 
 #items .grid-x.done {
-    background-color: #eee;
+    background-color: rgb(193, 255, 191);
     font-style: italic;
     color: #aaa;
 }
@@ -39,6 +67,16 @@ body {
 
 ul{
     list-style: none;
+    margin: 0;
+}
+
+.show-for-medium button{
+    height: 40px;
+    font-size: 14px !important;
+}
+
+.show-for-small-only button{
+    height: 50px;
 }
 
 body .ng-enter {

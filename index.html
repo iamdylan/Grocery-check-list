@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>Grocery Check-List</title>
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
     <link href="css/normalize.css" rel="stylesheet" media="screen">
     <link href="css/foundation.min.css" rel="stylesheet" media="screen">
     <link href="css/app-screen.css" rel="stylesheet" media="screen">
@@ -14,9 +15,11 @@
     <script src="js/app.js"></script>
 </head>
 <body ng-controller='grocListController'>
+<div id='heading'>
+    <h1>My Grocery List</h1>
+</div>
 <div class="grid-container full">
     <div class="cell">
-        <h1>My Grocery List</h1>
         <form id="addForm" ng-submit="insert()">
             <div class="grid-x">
                 <div class="cell">
@@ -31,7 +34,7 @@
                 </div>
                 <div class="large-2 cell">
                     <input
-                        type="text" name="qty" ng-model="qty" ng-trim="false" placeholder="Qty/Weight">
+                        type="text" name="qty" ng-model="qty" ng-trim="false" placeholder="Quantity">
                 </div>
                 <div class="large-2 cell">
                     <select name="type" ng-model="type">
@@ -50,18 +53,18 @@
                         <button type="submit" class="small button secondary" ng-click="clear()"><i class="fa fa-ban"></i> Clear Entry</button>
                     </div>
                     <div class="show-for-small-only">
-                        <ul class="medium button-group">
-                            <li>
-                                <button type="submit" class="small button" ng-disabled="!goodToGo()"><i class="fa fa-plus"></i></button>
+                        <ul class="grid-x">
+                            <li class="small-3 cell">
+                                <button type="submit" class="button small-3 cell" ng-disabled="!goodToGo()"><i class="fa fa-plus"> Add</i></button>
                             </li>
-                            <li>
-                                <button type="submit" class="small button secondary" ng-click="clear()"><i class="fa fa-ban"></i></button>
+                            <li class="small-3 cell">
+                                <button type="submit" class="button small-3 cell secondary" ng-click="clear()"><i class="fa fa-ban"> Clear</i></button>
                             </li>
-                            <li>
-                                <button type="button" class="small button primary" ng-click="print()"><i class="fa fa-print"></i></button>
+                            <li class="small-3 cell">
+                                <button type="button" class="button small-3 cell primary" ng-click="print()"><i class="fa fa-print"> Print</i></button>
                             </li>
-                            <li>
-                                <button type="button" class="small button alert" ng-click="remove()"><i class="fa fa-times"></i></button>
+                            <li class="small-3 cell">
+                                <button type="button" class="button small-3 cell alert" ng-click="remove()"><i class="fa fa-times"> Remove</i></button>
                             </li>
                         </ul>
                     </div>
