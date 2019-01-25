@@ -13,10 +13,10 @@ try {
     $qty = $_POST['qty'];
     $type = $_POST['type'];
 
-    $host = 'us-cdbr-iron-east-03.cleardb.net';
-    $user = 'b25041843c0a86';
-    $pass = '9c482365';
-    $dbname = 'heroku_e818f0b09bd0a0b';
+    $host = getenv('HOST');
+    $user = getenv('USERNAME');
+    $pass = getenv('PASSWORD');
+    $dbname = getenv('DB_NAME');
 
     $dsn = 'mysql:host='. $host .';dbname='. $dbname;
 
