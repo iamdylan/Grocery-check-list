@@ -17,7 +17,9 @@ This app was built using AngularJS and Zurb Foundation on the frontend and PHP o
 - AngularJS
 - Zurb Foundation 5
 - PHP
+- MySQL
+- AWS
 
 ## Try it out
 
-- [Demo](https://polar-refuge-37402.herokuapp.com)
+- [Demo](https://grocery-list-angularjs.iamdylanthompson.com/)
